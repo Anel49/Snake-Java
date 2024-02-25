@@ -42,7 +42,7 @@ public class GamePanel extends JPanel implements ActionListener {
     ArrayList<Image> imgs = new ArrayList<>();
 
     static Image background, honeycomb, r1a, r1b, l1a, l1b, u1a, u1b,
-        d1a, d1b = null;
+        d1a, d1b, t1a, t1b, t1c, t2a, t2b, t2c, hct = null;
 
     final int x[] = new int[GAME_UNITS];
     final int y[] = new int[GAME_UNITS];
@@ -91,6 +91,13 @@ public class GamePanel extends JPanel implements ActionListener {
         u1b = getImage("U1b.png");
         d1a = getImage("D1a.png");
         d1b = getImage("D1b.png");
+        t1a = getImage("T1a.png");
+        t1b = getImage("T1b.png");
+        t1c = getImage("T1c.png");
+        t2a = getImage("T2a.png");
+        t2b = getImage("T2b.png");
+        t2c = getImage("T2c.png");
+        hct = getImage("hct.png");
 
         Graphics2D g = (Graphics2D)graphics;
         
@@ -115,6 +122,9 @@ public class GamePanel extends JPanel implements ActionListener {
                     if (i == 1){
                         g.drawImage(l1b, x[1], y[1], UNIT_SIZE, UNIT_SIZE, null);
                     }
+                    if (i > 1){
+                        g.drawImage(hct, x[i], y[i], UNIT_SIZE, UNIT_SIZE, null);
+                    }
                 }
                 //if direction is right
                 if (direction == 'R'){
@@ -124,9 +134,8 @@ public class GamePanel extends JPanel implements ActionListener {
                     if (i == 1){
                         g.drawImage(r1a, x[1], y[1], UNIT_SIZE, UNIT_SIZE, null);
                     }
-                    if (i > 1) {
-                        graphics.setColor(Color.yellow);
-                        graphics.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+                    if (i > 1){
+                        g.drawImage(hct, x[i], y[i], UNIT_SIZE, UNIT_SIZE, null);
                     }
                 }
                 //if direction is up
@@ -137,9 +146,8 @@ public class GamePanel extends JPanel implements ActionListener {
                     if (i == 1){
                         g.drawImage(u1b, x[1], y[1], UNIT_SIZE, UNIT_SIZE, null);
                     }
-                    if (i > 1) {
-                        graphics.setColor(Color.yellow);
-                        graphics.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+                    if (i > 1){
+                        g.drawImage(hct, x[i], y[i], UNIT_SIZE, UNIT_SIZE, null);
                     }
                 }
                 //if direction is down
@@ -150,14 +158,9 @@ public class GamePanel extends JPanel implements ActionListener {
                     if (i == 1){
                         g.drawImage(d1a, x[1], y[1], UNIT_SIZE, UNIT_SIZE, null);
                     }
-                    if (i > 1) {
-                        graphics.setColor(Color.yellow);
-                        graphics.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+                    if (i > 1){
+                        g.drawImage(hct, x[i], y[i], UNIT_SIZE, UNIT_SIZE, null);
                     }
-                }
-                if (i > 1) {
-                    graphics.setColor(Color.orange);
-                    graphics.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
             //score text
